@@ -1,0 +1,17 @@
+class Camera{
+    public:
+        Camera();    
+	void setAlpha(double delta);
+	void setBeta(double delta);
+	void view();
+
+    private:
+	double width;
+	double height;
+	double alpha;
+	double raio;
+	double beta;
+	double max_beta;
+	double min_beta;
+	
+};
