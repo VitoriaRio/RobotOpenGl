@@ -4,24 +4,16 @@
 #include <math.h>
 #include "camera.h"
 #include "robot.h"
+#include "runner.h"
 using namespace std;
-GLint Width = 800;
-GLint Height = 800;
-int pos_mouse_x = 0;
-int pos_mouse_y = 0;
-Robot robot;
-Camera camera; 
 
-// prototipos
-void moving_mouse(int x, int y);
-void mouse(int button, int state, int x, int y);
-void initLighting(void);
-void reshape(int width, int height);
-void display(void);
-void keyboard(unsigned char key, int x, int y);
+Runner::Runner(){
+	Robot robot;
+	Camera camera; 
+}
 
 
-int main(int argc, char** argv){
+void Runner::run(int argc, char* argv[]){
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitWindowSize(Width, Height);
@@ -33,17 +25,15 @@ int main(int argc, char** argv){
 	glutMotionFunc(moving_mouse);
 	glutKeyboardFunc(keyboard);
 	glutMainLoop();
-	return 0;
 }
 
-void reshape(int width, int height){
+void Runner::reshape(int width, int height){
 	Width = width;
 	Height = height;
-	//glViewport(0, 0, width, height);
 	glutPostRedisplay();
 }
 
-void initLighting(void){
+void Runner::initLighting(void){
 	GLfloat lightposition[] = { 3.0, -3.0, 3.0, 0.0 };
 	glDepthFunc(GL_LESS);
 	glEnable(GL_DEPTH_TEST);
@@ -56,7 +46,7 @@ void initLighting(void){
 }
 
 // keyboard callback
-void keyboard(unsigned char key, int x, int y){
+void Runner::keyboard(unsigned char key, int x, int y){
 	cout << key;
 	switch (key) {
 	case 27:
@@ -74,7 +64,7 @@ void keyboard(unsigned char key, int x, int y){
 	}
 	glutPostRedisplay();
 }
-void moving_mouse(int x, int y){
+void Runner::moving_mouse(int x, int y){
 
 	if (x != pos_mouse_x || y != pos_mouse_y){
 
@@ -95,7 +85,7 @@ void moving_mouse(int x, int y){
 	glutPostRedisplay();
 }
 	
-void mouse(int button, int state, int x, int y){
+void Runner::mouse(int button, int state, int x, int y){
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN){
 		if (x != pos_mouse_x || y != pos_mouse_y){
@@ -119,7 +109,7 @@ void mouse(int button, int state, int x, int y){
 }
 
 //draw callback
-void display(void){
+void Runner::display(void){
   	camera.view();
 	robot.draw();
 	glutSwapBuffers();

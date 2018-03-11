@@ -1,5 +1,5 @@
-#include "camera.h"
 #include <GL/glut.h>
+#include "camera.h"
 #include <math.h>
 Camera::Camera(){
 	width = 800;
