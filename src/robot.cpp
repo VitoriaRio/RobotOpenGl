@@ -55,7 +55,7 @@ void Robot::drawarm(int arm){
 	glTranslatef(0.0, 0.0, 0.5);
 	glutSolidSphere(0.2, 30.0,30.0);
 	glTranslatef(0.0, 0.0, 0.1);
-	glRotatef(30.0, 1.0, 0.0, 0.0);
+	glRotatef(15.0, 1.0, 0.0, 0.0);
 	gluCylinder(gluNewQuadric(), 0.1, 0.1, 1.0, 30.0, 30.0);
 	glTranslatef(0.0, 0.0, 0.9);
 	glutSolidSphere(0.2, 30.0,30.0);
@@ -65,6 +65,28 @@ void Robot::drawarm(int arm){
 	gluCylinder(gluNewQuadric(), 0.1, 0.1, 0.7, 30.0, 30.0);
 	glTranslatef(0.0, 0.0, 0.6);
 	glutSolidSphere(0.2, 30.0,30.0);
+	glPushMatrix();
+		glRotatef(60.0, 1.0, 0.0, 0.0);
+		glTranslatef(0.0, 0.0, 0.1);
+		gluCylinder(gluNewQuadric(), 0.05, 0.05, 0.3, 30.0, 30.0);
+		glTranslatef(0.0, 0.0, 0.3);
+		glutSolidSphere(0.1, 30.0,30.0);
+		glRotatef(-90.0, 1.0, 0.0, 0.0);
+		glTranslatef(0.0, 0.0, 0.1);
+		glutWireCone(0.05, 0.3,50, 50);
+	glPopMatrix();
+
+	glPushMatrix();
+		glRotatef(-60.0, 1.0, 0.0, 0.0);
+		glTranslatef(0.0, 0.0, 0.1);
+		gluCylinder(gluNewQuadric(), 0.05, 0.05, 0.3, 30.0, 30.0);
+		glTranslatef(0.0, 0.0, 0.3);
+		glutSolidSphere(0.1, 30.0,30.0);
+		glRotatef(90.0, 1.0, 0.0, 0.0);
+		glTranslatef(0.0, 0.0, 0.05);
+		glutWireCone(0.05, 0.3,50, 50);
+	glPopMatrix();
+
 }
 void Robot::setPositionX(double x){
 	if (pos_x + x <13 && pos_x + x > -13){
