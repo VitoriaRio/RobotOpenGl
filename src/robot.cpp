@@ -1,10 +1,13 @@
 #include "robot.h"
 #include <GL/glut.h>
+#include <iostream>
+using namespace std;
 
 Robot::Robot(){
 	current_alpha = 0;
 	pos_x = 0;
 	pos_y = 0;
+	current_direction = 0.0;
 }
 
 
@@ -16,6 +19,8 @@ void Robot::draw(){
 	//Corpo
 	glTranslatef(pos_x,4.0, pos_y);
 
+	glRotatef(current_direction, 0.0, 1.0, 0.0);
+	//cout << current_direction;
 	glPushMatrix();
 		glPushMatrix();
 			glPushMatrix();
@@ -73,4 +78,6 @@ void Robot::setPositionY(double y){
 	pos_y += y;
 }
 
-
+void Robot::setDirection(int direction){
+	current_direction = direction;
+}

@@ -52,13 +52,21 @@ void Runner::keyboard(unsigned char key, int x, int y){
 	case 27:
 		exit(0); break;
 	case 'a':
-		robot.setPositionX(-0.1); break;
+		robot.setPositionX(-0.1);
+		robot.setDirection(-90.0);
+		break;
 	case 's':
-		robot.setPositionY(-0.1);  break;
+		robot.setPositionY(0.1);  
+		robot.setDirection(0.0);
+		break;
 	case 'd':
-		robot.setPositionX(0.1); break;
+		robot.setPositionX(0.1); 
+		robot.setDirection(90.0);
+		break;
 	case 'w':
-		robot.setPositionY(0.1);  break;
+		robot.setPositionY(-0.1);  
+		robot.setDirection(180.0);
+		break;
 	default:
 		return; 
 	}
@@ -110,7 +118,8 @@ void Runner::mouse(int button, int state, int x, int y){
 
 //draw callback
 void Runner::display(void){
-  	camera.view();
+		camera.view();
 	robot.draw();
+
 	glutSwapBuffers();
 }
