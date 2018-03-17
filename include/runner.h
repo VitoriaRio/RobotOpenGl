@@ -9,6 +9,7 @@ class Runner{
 		static int pos_mouse_y;
 		static Robot robot;
 		static Camera camera; 
+		static Plataform plataform; 
 
 		static void reshape(int width, int height);
 		static void initLighting(void);

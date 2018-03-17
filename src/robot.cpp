@@ -12,11 +12,6 @@ Robot::Robot(){
 
 
 void Robot::draw(){
-	//Plataforma
-	glPushMatrix();
-		drawplataform();
-	glPopMatrix();
-	//Corpo
 	glTranslatef(pos_x,4.0, pos_y);
 
 	glRotatef(current_direction, 0.0, 1.0, 0.0);
@@ -72,10 +67,14 @@ void Robot::drawarm(int arm){
 	glutSolidSphere(0.2, 30.0,30.0);
 }
 void Robot::setPositionX(double x){
-	pos_x += x;
+	if (pos_x + x <13 && pos_x + x > -13){
+		pos_x += x;
+	}
 }
 void Robot::setPositionY(double y){
-	pos_y += y;
+	if (pos_y + y <13 && pos_y + y > -13){
+		pos_y += y;
+	}
 }
 
 void Robot::setDirection(int direction){

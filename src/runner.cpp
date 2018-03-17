@@ -2,6 +2,7 @@
 #include <GL/glut.h>
 #include <iostream>
 #include <math.h>
+#include "plataform.h"
 #include "camera.h"
 #include "robot.h"
 #include "runner.h"
@@ -10,6 +11,7 @@ using namespace std;
 Runner::Runner(){
 	Robot robot;
 	Camera camera; 
+	Plataform plataform;
 }
 
 
@@ -47,11 +49,10 @@ void Runner::initLighting(void){
 
 // keyboard callback
 void Runner::keyboard(unsigned char key, int x, int y){
-	cout << key;
 	switch (key) {
 	case 27:
 		exit(0); break;
-	case 'a':
+	case 'a': 
 		robot.setPositionX(-0.1);
 		robot.setDirection(-90.0);
 		break;
@@ -127,6 +128,7 @@ void Runner::display(void){
 	double x = robot.getPositionX();
 	double y = robot.getPositionY();
 	camera.view(x, y);
+	plataform.draw();
 	robot.draw();
 
 	glutSwapBuffers();
