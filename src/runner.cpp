@@ -44,7 +44,7 @@ void Runner::initLighting(void){
 	glLightfv(GL_LIGHT0, GL_POSITION, lightposition);
 	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
 	glEnable(GL_COLOR_MATERIAL);
-	glClearColor(0.5, 0.0, 0.0, 0.0);
+	glClearColor(0.0, 0.0, 0.0, 0.0);
 }
 
 // keyboard callback
