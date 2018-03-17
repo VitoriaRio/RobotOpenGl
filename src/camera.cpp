@@ -11,7 +11,7 @@ Camera::Camera(){
 	min_beta = 5.0;
 }
 
-void Camera::view(){
+void Camera::view(double pos_x, double pos_y){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glViewport(width/8, height/8, width / 1.5, height / 1.5);
 	glMatrixMode(GL_PROJECTION);
@@ -19,7 +19,7 @@ void Camera::view(){
 	glFrustum(-3.0, 3.0, -3.0, 3.0, 3.0, 70.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt( raio*sin(alpha) ,beta, raio*cos(alpha), 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	gluLookAt(raio*sin(alpha) + pos_x ,beta, raio*cos(alpha) + pos_y, pos_x, 0.0,pos_y, 0.0, 1.0, 0.0);
 
 }
 void Camera::setAlpha(double delta){
@@ -28,5 +28,11 @@ void Camera::setAlpha(double delta){
 void Camera::setBeta(double delta){
 	if (beta + delta < max_beta && beta + delta > min_beta){
 		beta += delta;
+	}
+}
+
+void Camera::setZoom(int delta){
+	if (raio + delta > 5 && raio + delta < 15 ){
+		raio = raio + delta;
 	}
 }

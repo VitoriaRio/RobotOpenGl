@@ -3,7 +3,8 @@ class Camera{
         Camera();    
 	void setAlpha(double delta);
 	void setBeta(double delta);
-	void view();
+	void setZoom(int delta);
+	void view(double pos_x, double pos_y);
 
     private:
 	double width;

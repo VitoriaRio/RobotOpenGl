@@ -81,3 +81,11 @@ void Robot::setPositionY(double y){
 void Robot::setDirection(int direction){
 	current_direction = direction;
 }
+
+double Robot::getPositionX(){
+	return pos_x;
+}
+
+double Robot::getPositionY(){
+	return pos_y;
+}

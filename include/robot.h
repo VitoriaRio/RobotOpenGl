@@ -5,6 +5,8 @@ class Robot{
 		void setDirection(int direction);
 		void setPositionX(double x);
 		void setPositionY(double y);
+		double getPositionY();
+		double getPositionX();
     private:
 		double current_alpha;
 		double	pos_x;

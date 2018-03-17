@@ -67,6 +67,12 @@ void Runner::keyboard(unsigned char key, int x, int y){
 		robot.setPositionY(-0.1);  
 		robot.setDirection(180.0);
 		break;
+	case '+':
+		camera.setZoom(-1);
+		break;
+	case '-':
+		camera.setZoom(1);
+		break;
 	default:
 		return; 
 	}
@@ -118,7 +124,9 @@ void Runner::mouse(int button, int state, int x, int y){
 
 //draw callback
 void Runner::display(void){
-		camera.view();
+	double x = robot.getPositionX();
+	double y = robot.getPositionY();
+	camera.view(x, y);
 	robot.draw();
 
 	glutSwapBuffers();
