@@ -1,7 +1,8 @@
+#include <GL/glut.h>
 class Robot{
     public:
         Robot();    
-		void draw();
+		void draw(GLuint head);
 		void setDirection(int direction);
 		void setPositionX(double x);
 		void setPositionY(double y);
@@ -27,9 +28,8 @@ class Robot{
 		double	pos_x;
 		double pos_y;
 		int current_direction;
-        void drawplataform();
 		void drawbody();
-		void drawhead();
+		void drawhead( GLuint texture);
 		void drawarm(int arm, double alpha, double beta);
 	
 };

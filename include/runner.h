@@ -10,6 +10,8 @@ class Runner{
 		static Robot robot;
 		static Camera camera; 
 		static Plataform plataform; 
+		static GLuint gokuhead;
+		static GLuint ring;
 
 		static void reshape(int width, int height);
 		static void initLighting(void);
@@ -18,5 +20,6 @@ class Runner{
 		static void mouse(int button, int state, int x, int y);
 		static void display(void);
 		static GLuint texture(char *filename);
-
+		static void initRendering();
+		static GLuint loadTextureFromFile(char *filename);
 };

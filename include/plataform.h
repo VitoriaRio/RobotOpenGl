@@ -1,9 +1,10 @@
+#include <GL/glut.h>
 class Plataform{
     public:
         Plataform();    
-		void draw();
+		void draw(GLuint texture);
 
     private:
 		void drawring();
-		void drawplataform();
+		void drawplataform(GLuint texture);
 };

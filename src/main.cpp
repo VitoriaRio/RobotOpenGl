@@ -8,6 +8,8 @@ int Runner::Width = 800;
 int Runner::Height = 800;
 int Runner::pos_mouse_x;
 int Runner::pos_mouse_y;
+GLuint Runner::gokuhead;
+GLuint Runner::ring;
 Robot Runner::robot;
 Camera Runner::camera;
 Plataform Runner::plataform;

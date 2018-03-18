@@ -22,12 +22,11 @@ Robot::Robot(){
 }
 
 
-void Robot::draw(){
-	cout<<" -> "<<minAlpha<<" "<<maxAlpha<<" "<<arm<<" "<<endl;
+void Robot::draw(GLuint head){
+
 	glTranslatef(pos_x,4.0, pos_y);
 
 	glRotatef(current_direction, 0.0, 1.0, 0.0);
-	//cout << current_direction;
 	glPushMatrix();
 		glPushMatrix();
 			glPushMatrix();
@@ -39,33 +38,56 @@ void Robot::draw(){
 		drawarm(-1,alphaR, betaR);
 	glPopMatrix();
 	//desenha cabeca
-	drawhead();
+	drawhead(head);
 
-}
-void Robot::drawplataform(){
-	glColor3f(0, 1, 1);
-        glScalef(25,3.0,25);
-        glTranslatef(0, 0, 0);
-        glutSolidCube(1);
 }
 
 void Robot::drawbody(){
-	glColor3f(1.0, 1.0, 0.0);
+	glColor3f(0.9, 0.4, 0.0);
 	glutSolidCube(1.0);
 
 	//desenha esfera
 	glTranslatef(0.0,-1.5, 0.0);
 	glutSolidSphere(1.0,50.0, 50.0);
 }
-void Robot::drawhead(){
-	glRotatef(-90.0, 1.0, 0.0, 0.0);
-	glTranslatef(0.0,0.0,1.1);
-	glutSolidSphere(0.6, 30.0,30.0);
+void Robot::drawhead(GLuint texture){
+	glPushMatrix();
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, texture);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		GLUquadric *quad = gluNewQuadric();
+		gluQuadricTexture(quad, 1);
+		glRotatef(-90.0, 1.0, 0.0, 0.0);
+		glTranslatef(0.0,0.0,1.1);
+		gluSphere(quad, 0.6, 30.0,30.0);
+		glDisable(GL_TEXTURE_2D);
+		glColor3f(1.0, 1.0, 0.0);
+		glPushMatrix();
+			glutWireCone(0.5, 1.0,200, 200);
+			glPushMatrix();
+				glRotatef(-45.0, 1.0, 0.0, 0.0);
+				glutWireCone(0.5, 1.0,200, 200);
+			glPopMatrix();
+			glPushMatrix();
+				glRotatef(-45.0, 0.0, 1.0, 0.0);
+				glutWireCone(0.5, 1.0,200, 200);
+			glPopMatrix();
+			glPushMatrix();
+				glRotatef(45.0, 0.0, 1.0, 0.0);
+				glutWireCone(0.5, 1.0,200, 200);
+			glPopMatrix();
+		glPopMatrix();
+	glPopMatrix();
+
+	
 }
 void Robot::drawarm(int arm, double alpha, double beta){
+	glColor3f(0.4, 0.1, 1.0);
 	glRotatef(arm*90.0, 0.0, 1.0, 0.0);
 	glTranslatef(0.0, 0.0, 0.5);
 	glutSolidSphere(0.2, 30.0,30.0);
+	glColor3f(0.98, 0.78, 0.67);
 	glTranslatef(0.0, 0.0, 0.1);
 	glRotatef(alpha, 1.0, 0.0, 0.0);
 	gluCylinder(gluNewQuadric(), 0.1, 0.1, 1.0, 30.0, 30.0);
@@ -145,9 +167,7 @@ void Robot::setBeta(double angle){
 		}else{
 			betaR = betaR+angle ;
 		}
-		// if (betaR + angle <= maxBeta && betaR + angle >=minBeta){
-		// 	betaR = betaR+angle ;
-		// }
+
 	}else{
 		if (betaL+angle > maxBeta){
 			betaL = minBeta+angle;
@@ -156,9 +176,7 @@ void Robot::setBeta(double angle){
 		}else{
 			betaL = betaL+angle ;
 		}
-		// if (betaL + angle <= maxBeta && betaL + angle >=minBeta){
-		// 	betaL = betaL+angle ;
-		// }
+
 	}
 }
 
