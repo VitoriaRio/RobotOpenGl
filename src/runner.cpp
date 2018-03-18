@@ -74,6 +74,27 @@ void Runner::keyboard(unsigned char key, int x, int y){
 	case '-':
 		camera.setZoom(1);
 		break;
+	case 'q': 
+		robot.setAlpha(-1.0);
+	break;	
+	case 'e': 
+		robot.setAlpha(1.0);
+		break;
+	case 'f': 
+		robot.changeArm();
+		break;
+	case '1': 
+		robot.setBeta(-2.0);
+	break;
+	case '2': 
+		robot.setBeta(2.0);
+	break;
+	case '3': 
+		robot.spinHands();
+	break;
+	case '4': 
+		robot.pick();
+	break;
 	default:
 		return; 
 	}
@@ -133,3 +154,30 @@ void Runner::display(void){
 
 	glutSwapBuffers();
 }
+
+// void Runner::initRendering() {
+// 	glEnable(GL_DEPTH_TEST);
+// 	glEnable(GL_NORMALIZE);
+// 	glEnable(GL_COLOR_MATERIAL);
+// 	quad = gluNewQuadric();
+// 	string golufilename("some string");
+// 	textureId = loadTexture(gokufilename);
+// }
+
+// GLuint Runner::texture(char *filename){
+// 	GLuint textureId;
+// 	RgbImage theTexMap(filename); //Image with texture
+// 	glGenTextures(1, &textureId); //Make room for our texture
+// 	glBindTexture(GL_TEXTURE_2D, textureId); //Texture to be edited
+// 	//Map the image to the texture
+// 	glTexImage2D(GL_TEXTURE_2D, //Always GL_TEXTURE_2D
+// 	0, //0 for now
+// 	GL_RGB, //Format OpenGL uses for image
+// 	theTexMap.GetNumCols(), //Width
+// 	theTexMap.GetNumRows(), //Height
+// 	0, //The border of the image
+// 	GL_RGB, //GL_RGB: pixels are stored in RGB format
+// 	GL_UNSIGNED_BYTE, //GL_UNSIGNED_BYTE:pixels are stored as
+// 	theTexMap.ImageData()); //The actual pixel data
+// 	return textureId; //Returns the id of the texture
+// }

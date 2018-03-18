@@ -17,6 +17,6 @@ class Runner{
 		static void moving_mouse(int x, int y);
 		static void mouse(int button, int state, int x, int y);
 		static void display(void);
-
+		static GLuint texture(char *filename);
 
 };
