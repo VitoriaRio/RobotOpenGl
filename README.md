@@ -3,7 +3,7 @@
 - Vitória Martins Rio
 
 ## Vídeo
-![jogo em funcionamento](https://youtu.be/pOyEexzC2Wk)
+[jogo em funcionamento](https://youtu.be/pOyEexzC2Wk)
 
 
 ## Manual
