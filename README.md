@@ -2,6 +2,10 @@
 - Anny Caroline Chagas
 - Vitória Martins Rio
 
+## Vídeo
+![jogo em funcionamento](https://youtu.be/pOyEexzC2Wk)
+
+
 ## Manual
 - **w**: move o robô para frente;
 - **a**: move o robô para esquerda;
@@ -11,7 +15,7 @@
 - **q**: movimenta o braço selecionado para cima;
 - **e**: movimenta o braço selecionado para baixo;
 - **1**: movimenta o antebraço selecionado para cima;
-- **2**: movimenta o antebraço selecionado para cima;
+- **2**: movimenta o antebraço selecionado para baixo;
 - **f**: muda de braço;
   
 - **3**: gira as garras;
