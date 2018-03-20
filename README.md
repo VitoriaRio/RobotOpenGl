@@ -1,12 +1,14 @@
+# Manual
+![](https://uploaddeimagens.com.br/images/001/337/122/full/cg-projfinal-goku.png?1521505944)
+
 ## Alunas
 - Anny Caroline Chagas
 - Vitória Martins Rio
 
 ## Vídeo
-[jogo em funcionamento](https://youtu.be/pOyEexzC2Wk)
+[projeto final em funcionamento](https://youtu.be/pOyEexzC2Wk)
 
-
-## Manual
+## Teclas
 - **w**: move o robô para frente;
 - **a**: move o robô para esquerda;
 - **s**: move o robô para trás;
