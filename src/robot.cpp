@@ -6,9 +6,9 @@ using namespace std;
 
 Robot::Robot(){
 	alphaR = 15;
-	betaR = 60.0;
+	betaR = 50.0;
 	alphaL = 15;
-	betaL = 60.0;
+	betaL = -50.0;
 	pos_x = 0;
 	pos_y = 0;
 	current_direction = 0.0;
@@ -17,8 +17,8 @@ Robot::Robot(){
 	arm = 1;
 	theta = 0;
 	delta = 60;
-	minBeta = 0;
-	maxBeta = 360;
+	minBeta = -60;
+	maxBeta = 78;
 }
 
 
@@ -94,7 +94,7 @@ void Robot::drawarm(int arm, double alpha, double beta){
 	glTranslatef(0.0, 0.0, 0.9);
 	glutSolidSphere(0.2, 30.0,30.0);
 	glRotatef(-60.0*arm, 0.0, 1.0, 0.0);
-	glRotatef(beta, 1.0, 0.0, 0.0);
+	glRotatef(beta, 0.0, 1.0, 0.0);
 	glTranslatef(0.0, 0.0, 0.1);
 	gluCylinder(gluNewQuadric(), 0.1, 0.1, 0.7, 30.0, 30.0);
 	glTranslatef(0.0, 0.0, 0.6);
@@ -159,6 +159,18 @@ void Robot::setAlpha(double angle){
 }
 
 void Robot::setBeta(double angle){
+	
+	if (arm == 1){
+		if (betaR + angle <= maxBeta && betaR + angle >=minBeta){
+			betaR = betaR+angle;
+		}
+	}else{
+		if (betaL + angle <= maxBeta && betaL + angle >=minBeta){
+			betaL = betaL+angle;
+		}
+	}
+
+	/*
 	if (arm == 1){
 		if (betaR+angle > maxBeta){
 			betaR = minBeta+angle;
@@ -178,6 +190,7 @@ void Robot::setBeta(double angle){
 		}
 
 	}
+	*/
 }
 
 void Robot::spinHands(){
